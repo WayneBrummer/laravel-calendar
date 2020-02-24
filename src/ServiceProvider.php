@@ -17,17 +17,7 @@ class ServiceProvider extends IlluminateServiceProvider
 
     public function boot()
     {
-        $stub = __DIR__ . '/../database/migrations/create_calendar_tables.php.stub';
-        if ($this->app->runningInConsole()) {
-            if (!\class_exists('CreateCalendarTable')) {
-                $this->publishes([
-                    $stub => database_path('migrations/' .
-                    \date('Y_m_d_His', \time()) . '_create_calendar_tables.php'),
-                ], 'migrations');
-            }
-
-            $this->configure();
-        }
+        $this->configure();
     }
 
     public function registerCommands()
